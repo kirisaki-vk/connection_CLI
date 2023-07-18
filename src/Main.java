@@ -2,10 +2,10 @@ import java.sql.*;
 
 public class Main {
     public static void main(String[] args) {
-        String user = "postgres";
-        String password = "1234";
-        String host = "localhost";
-        String database = "sys2_connection";
+        String user = System.getenv("CONN_CLI_PG_USER");
+        String password = System.getenv("CONN_CLI_PG_PASSWORD");
+        String host = System.getenv("CONN_CLI_PG_HOST");
+        String database = System.getenv("CONN_CLI_PG_DATABASE");
 
         try {
             Connection mainConnection = DriverManager.getConnection("jdbc:postgresql://" + host + "/" + database, user, password);
