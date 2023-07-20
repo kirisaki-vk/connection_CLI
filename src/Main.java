@@ -15,10 +15,10 @@ public class Main {
                     case "help":
                         showHelp();
                         break;
-                    case "read_connection":
+                    case "readconnection":
                         readConnections(mainConnection, args);
                         break;
-                    case "new_connection":
+                    case "newconnection":
                         createNewConnection(mainConnection, args);
                         break;
                     default:
@@ -28,7 +28,7 @@ public class Main {
             } else showHelp();
 
             mainConnection.close();
-        } catch (SQLException exception) {
+        } catch (SQLException | NumberFormatException exception) {
             System.out.println("An error occurred: " + exception.getMessage());
         }
     }
@@ -43,8 +43,8 @@ public class Main {
         System.out.println("\n");
     }
 
-    private static void readConnections(Connection connection, String[] args) {
-        try {
+    private static void readConnections(Connection connection, String[] args) throws SQLException,NumberFormatException {
+
             Statement statement = connection.createStatement();
             String query = (args.length == 1) ? "SELECT * FROM connection" : "SELECT * FROM connection LIMIT " + Integer.parseInt(args[1]);
             ResultSet result = statement.executeQuery(query);
@@ -58,23 +58,16 @@ public class Main {
             }
 
             result.close();
-        } catch (SQLException | NumberFormatException exception) {
-            System.out.println("Error while executing the query: " + exception.getMessage());
-        }
     }
 
-    private static void createNewConnection(Connection connection, String[] args) {
+    private static void createNewConnection(Connection connection, String[] args) throws SQLException{
         if (args.length == 1) {
             System.out.println("No username provided. Please provide a username.");
         } else {
-            try {
                 Statement statement = connection.createStatement();
                 String query = "INSERT INTO connection(username) VALUES ('" + args[1] + "')";
                 statement.execute(query);
                 System.out.println("New connection created successfully.");
-            } catch (SQLException exception) {
-                System.out.println("An error occurred during the insert: " + exception.getMessage());
-            }
         }
     }
 }
