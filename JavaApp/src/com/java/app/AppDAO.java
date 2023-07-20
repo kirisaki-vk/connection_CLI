@@ -1,15 +1,11 @@
 package com.java.app;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
 public class AppDAO {
     DbConnection dbConnection = new DbConnection();
     Connection connection = dbConnection.createConnection();
-
-    // new connection
     public void newconnexion(String firstname){
         try {
             String request = "INSERT INTO connection(firstname) VALUES(?)";
@@ -22,22 +18,19 @@ public class AppDAO {
             System.out.println("Error while adding the new connection :\n" + exception.getMessage());
         }
     }
-
-    // read connexion
     public List<UserConnection> readconnection(int limit){
         List<UserConnection> userConnection = new ArrayList<>();
         try{
             String request;
-            int i;
+            PreparedStatement preparedStatement;
             if (limit == 0){
                 request = "SELECT * FROM connection";
-
+                preparedStatement = connection.prepareStatement(request);
             } else {
                 request = "SELECT * FROM connection LIMIT ?";
+                preparedStatement = connection.prepareStatement(request);
+                preparedStatement.setInt(1, limit);
             }
-
-            PreparedStatement preparedStatement = connection.prepareStatement(request);
-            preparedStatement.setInt(1, limit);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 userConnection.add(new UserConnection(
@@ -59,6 +52,5 @@ public class AppDAO {
         } catch (SQLException exception) {
             System.out.println(exception.getMessage());
         }
-
     }
 }

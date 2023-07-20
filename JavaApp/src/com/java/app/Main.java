@@ -1,8 +1,6 @@
 package com.java.app;
-
 import java.util.ArrayList;
 import java.util.List;
-
 public class Main {
     static AppDAO appDAO = new AppDAO();
     public static void connectionList(List<UserConnection> list){
@@ -11,7 +9,7 @@ public class Main {
             System.out.println("----------");
             System.out.println("Id : " + connections.getUuid());
             System.out.println("Username : " + connections.getFirstname());
-            System.out.println("Connection date & time : " + connections.getFirstname());
+            System.out.println("Connection date & time : " + connections.getConnextionDatetime());
         }
     }
     public static void main(String[] args) {
@@ -23,17 +21,14 @@ public class Main {
                     appDAO.newconnexion(args[1]);
                 }
             }
-            case "readconnexion" -> {
+            case "readconnection" -> {
                 if (args.length == 1) {
                     connectionList(appDAO.readconnection(0));
                 } else {
                     connectionList(appDAO.readconnection(Integer.parseInt(args[1])));
                 }
             }
-
         }
-
-        // to close the connection
         appDAO.closeConnection();
     }
 }
