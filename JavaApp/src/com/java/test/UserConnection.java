@@ -1,4 +1,4 @@
-package com.java.app;
+package com.java.test;
 import java.util.UUID;
 public class UserConnection {
     private UUID uuid;

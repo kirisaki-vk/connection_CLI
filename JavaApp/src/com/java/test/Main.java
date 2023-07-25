@@ -1,4 +1,4 @@
-package com.java.app;
+package com.java.test;
 import java.util.ArrayList;
 import java.util.List;
 public class Main {
