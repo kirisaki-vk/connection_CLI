@@ -1,9 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="sys2db">
-    <output-path>$PROJECT_DIR$/out/artifacts/sys2db</output-path>
-    <root id="archive" name="Idea.jar">
-      <element id="module-output" name="Idea" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../../../PROG2/Prog2/JDBC/postgresql-42.6.0.jar" path-in-jar="/" />
-    </root>
-  </artifact>
-</component>
