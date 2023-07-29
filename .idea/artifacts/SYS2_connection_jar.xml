@@ -3,7 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/SYS2_connection_jar</output-path>
     <root id="archive" name="SYS2_connection.jar">
       <element id="module-output" name="SYS2_connection" />
-      <element id="extracted-dir" path="$USER_HOME$/Postgres/JDBCDriver/postgresql-42.6.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Documents/JDBC Driver/postgresql-42.6.0.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
