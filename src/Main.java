@@ -38,8 +38,8 @@ public class Main {
         System.out.println("\nSYS2_connection <options>");
         System.out.println("==================================");
         System.out.println("help: Show this help");
-        System.out.println("read_connection [number]: displays all connections");
-        System.out.println("new_connection <username>: create a new connection");
+        System.out.println("readconnection [number]: displays all connections");
+        System.out.println("newconnection <username>: create a new connection");
         System.out.println("\n");
     }
 
